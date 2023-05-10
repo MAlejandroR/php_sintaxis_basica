@@ -1,5 +1,18 @@
 <?php
-$numero1 = rand(1,100);
+$nombre = $_POST['nombre'] ?? $_GET['nombre'] ?? "Anonimo";
+
+//Versus
+if (isset ($_POST['nombre']))
+    $nombre = $_POST['nombre'];
+elseif (isset ($_GET['nombre']))
+    $nombre = $_GET['nombre'];
+else
+    $nombre = "Anonimo";
+
+//Versus
+$nombre = isset ($_POST['nombre']) ? $_POST['nombre'] : (isset ($_GET['nombre']) ? $_GET['nombre'] : "Anonimo"
+
+
 $numero2 = rand(1,100);
 $resultado = $numero1<=> $numero2;
 match ($resultado) {

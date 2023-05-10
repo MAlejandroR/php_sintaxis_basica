@@ -1,5 +1,26 @@
 <?php
 
+$x=5;
+$f = fn()=> $x=4;
+
+
+
+echo "<h1>".$f(3)."</h1>";
+echo "<h1>$x</h1>";
+
+//funciones_01_funciones.php
+
+//Comparación de arrays
+$array1=[1,2,3];
+$array2=[2=>3,1=>2,0=>1];
+if ($array1==$array2)
+    echo "<h1>Son iguales</h1>";
+else
+    echo "<h1>Son distintos</h1>";
+
+
+
+//Variables de funcion
 $suma= fn($a, $b)=>$a+$b;
 
 echo "<h1>\$suma que es una función es de tipo </h1>".gettype($suma);
@@ -54,5 +75,6 @@ $listado->add_persona("pedro4");
 foreach ($listado as $item) {
     echo "<h1>$item</h1>";
 }
+
 
 ?>
