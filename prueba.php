@@ -1,7 +1,11 @@
 <?php
 
+
 $x=5;
-$f = fn()=> $x=4;
+$f = fn(&$x)=> $x++;
+echo "<h1>".$f($x)."</h1>";
+echo "<h1>Valor de x $x</h1>";
+
 
 
 
