@@ -3,12 +3,12 @@
 class Persona{
     private string $nombre;
     private string $apellido;
-    private string $password;
-    private string $email;
     private int $edad;
 
-    public function __construct( string $nombre,  string $apellido, string $direccoin, int $edad){
-
+    public function __construct( string $nombre,  string $apellido, string $edad){
+        $this->nombre = $nombre;
+        $this->apellido = $apellido;
+        $this->edad = $edad;
     }
 
 

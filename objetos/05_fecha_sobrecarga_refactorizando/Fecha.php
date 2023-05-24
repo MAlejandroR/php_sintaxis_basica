@@ -1,9 +1,19 @@
 <?php
 
 class Fecha{
+    private int $dia;
+    private int $mes;
+    private int $year;
 
-    public function __construct( int $dia=date("null,  int $mes=null, int $year=null){
+
+    public function __construct( int|string $dia=null,  int $mes=null, int $year=null){
         //Si no se pasan valores se toma la fecha actual
+        if (is_string($dia)){
+            $fecha = explode("/", $dia);
+            $dia = $fecha[0];
+            $mes = $fecha[1];
+            $year = $fecha[2];
+        }
         $dia= $dia ?? date("d");
         $mes= $mes ?? date("m");
         $year= $year ?? date("Y");
@@ -21,13 +31,9 @@ class Fecha{
     }
 
 
-public function mostrar_fecha(){
-    return "$this->dia/$this->mes/$this->year";
-}
 
-
-    public function __toString():string{
-        return "Nombre: $this->nombre, Apellido: $this->apellido";
+   public function __toString():string{
+        return "$this->dia/$this->mes/$this->year";
     }
 
 }

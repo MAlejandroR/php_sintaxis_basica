@@ -10,7 +10,7 @@ function contenido (string $dir){
     $practicas = "";
     foreach ($ficheros as $fichero)
         if (is_dir($fichero))
-            $practicas .= "<a href='$fichero'>$fichero</a><Hr>";
+            $practicas .= "<a href='$fichero'>$fichero</a><hr>\n";
     return $practicas;
 
 }
