@@ -1,13 +1,12 @@
 <?php
 
 
-use Contacto;
 
 class Agenda extends Contacto
 {
 
     private array $agenda = [];
-//    public function __construct($agenda =[])
+    public function __construct(){}
 //    {
 //        var_dump($agenda);
 //        $this->agenda=$agenda;

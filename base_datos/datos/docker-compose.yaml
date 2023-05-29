@@ -1,0 +1,23 @@
+version: "3.8"
+services:
+  mysql:
+    image: mysql
+    container_name: "myqsl"
+    environment:
+      - MYSQL_USER=alumno_nett
+      - MYSQL_PASSWORD=pass_nett
+      - MYSQL_DATABASE=nett
+      - MYSQL_ROOT_PASSWORD=root
+    ports:
+      - 23306:3306
+  phpmyadmin:
+    image: phpmyadmin
+    container_name: "manuel-phpmyadmin"
+    ports:
+      - 8800:80
+    depends_on:
+      - mysql
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOST=mysql
+

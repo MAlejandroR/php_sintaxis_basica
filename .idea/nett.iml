@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="WEB_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/composer/spec" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/composer/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/composer/Clases" isTestSource="false" packagePrefix="Clases\" />
+      <excludeFolder url="file://$MODULE_DIR$/composer/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/cookies/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/cookies/vendor/statickidz/php-google-translate-free" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="inaem" />
+    <orderEntry type="module" module-name="nett_ejercicios" />
+    <orderEntry type="module" module-name="web" />
+    <orderEntry type="module" module-name="videos" />
+    <orderEntry type="module" module-name="correcion_practicas" />
+    <orderEntry type="module" module-name="tv" />
+  </component>
+</module>

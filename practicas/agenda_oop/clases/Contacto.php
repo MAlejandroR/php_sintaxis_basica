@@ -1,12 +1,11 @@
 <?php
 
 
-use Validar;
 
 class Contacto extends Validar
 {
 
-    public function __construct(private string $nombre, private string $telefono)
+    public function __construct(private string|null $nombre, private string|null $telefono)
     {}
     public function get_nombre():string
     {

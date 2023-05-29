@@ -2,7 +2,7 @@
 ini_set('display_errors',1);
 error_reporting(E_ALL);
 
-$carga = fn ($clase) => require("clases/$clase.php");
+$ carga = fn ($clase) => require("clases/$clase.php");
 spl_autoload_register($carga);
 
 //inicializo variables
