@@ -1,26 +1,44 @@
-<?php
-//6_1_insert
 
+<?php
+//7_1_delete
 ini_set("display_errors", 1);
 error_reporting(E_ALL);
 
 // bases_datos/acceso_basico_con_env.php
 require "./vendor/autoload.php";
-$carga = fn($clase)=>require("$clase.php");
-spl_autoload_register($carga);
 
-//Primero especificamos la ubicación y nombre del fichero .env.
-// En caso de llamarse de otra forma, lo especificaríamos
-// __DIR__."otro_nombre"
+
+
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
-//Se puede usar la función safeload() para que no genere una excepción
-//si no encuentra el fichero
 $dotenv->load();
-if (isset($_POST['submit'])){
-   $bd = new DataBase();
-   $nombre = $_POST['nombre'];
-   $password = $_POST['password'];
-   $mensaje =$bd->inserta($nombre,$password);
+
+if (isset($_POST['submit'])) {
+
+//Leemos los datos de las variables de entorno
+    $user = $_ENV['USER_DATABASE'];
+    $password = $_ENV['PASSWORD'];
+    $database = $_ENV['DATABASE'];
+    $port = $_ENV['PORT'];
+    $host = $_ENV['HOST'];
+
+
+    $conexion = new mysqli($host, $user, $password, $database, $port);
+    $cod = $_POST['cod'];
+    $nombre = $_POST['nombre'];
+    $password = $_POST['password'];
+    $sentencia =<<<FIN
+        update usuarios 
+        set nombre = '$nombre', password = '$password'
+        where cod = $cod
+FIN;
+    try {
+        $conexion->query($sentencia);
+        $registros= $conexion->affected_rows;
+        $plural = ($registros>1||$registros==0)? "s" :""; //para añadir o no una s
+        $mensaje = "Se han actualizado $registros usuario".($registros>1 OR $registros==0?"s":"");
+    } catch (mysqli_sql_exception $ex) {
+        $mensaje = "Error actualizando " . $ex->getMessage();
+    }
 }
 
 ?>
@@ -36,12 +54,15 @@ if (isset($_POST['submit'])){
 <body>
 <fieldset>
     <legend>Datos de usuario</legend>
-    <h1><?=$mensaje ??""?></h1>
-<form action="index.php" method="post">
-    Usuario <input type="text" name="nombre" id=""><br>
-    Password <input type="text" name="password" id=""><br>
-    <input type="submit" value="Insertar" name="submit">
-</form>
-    </fieldset>
+    <h1><?= $mensaje ?? "" ?></h1>
+    <form action="index.php" method="post">
+        cod del usuario a actualizar <input type="text" name="cod" id=""><br>
+        <h1>Nuevos datos de usuario </h1>
+        Usuario <input type="text" name="nombre" id=""><br>
+        Password <input type="text" name="password" id=""><br>
+
+        <input type="submit" value="Actualizar" name="submit">
+    </form>
+</fieldset>
 </body>
 </html>

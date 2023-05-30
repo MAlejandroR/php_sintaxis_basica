@@ -35,12 +35,11 @@ if (isset($_POST['submit'])){
 <body>
 <fieldset>
     <legend>Datos de usuario</legend>
-    <h1><?=$mensaje ??""?></h1>
+    <h1><?= $mensaje ?? "" ?></h1>
 <form action="index.php" method="post">
-    Usuario <input type="text" name="nombre" id=""><br>
-    Password <input type="text" name="password" id=""><br>
-    <input type="submit" value="Insertar" name="submit">
+    ID del usuario a borrar <input type="text" name="cod" id=""><br>
+    <input type="submit" value="Borrar" name="submit">
 </form>
-    </fieldset>
+</fieldset>
 </body>
 </html>

@@ -1,9 +1,8 @@
 <?php
-//6_1_insert
+//8_1_update
 ini_set("display_errors", 1);
 error_reporting(E_ALL);
 
-// bases_datos/acceso_basico_con_env.php
 require "./vendor/autoload.php";
 
 
@@ -22,15 +21,19 @@ if (isset($_POST['submit'])) {
 
 
     $conexion = new mysqli($host, $user, $password, $database, $port);
-    $id = $_POST['id'];
-    $sentencia = "delete from  usuarios where cod=$id";
+
+    $codigo = $_POST['cod'];
+
+    $sentencia = "delete from  usuarios where cod=$codigo";
     try {
         $conexion->query($sentencia);
         $registros= $conexion->affected_rows;
-        $mensaje = "Se han borrado $registros usuario".($registros>1?"s":"");
+        $plural = ($registros>1||$registros==0)? "s" :""; //para añadir o no una s
+        $mensaje = "Se han borrado $registros usuario$plural";
 
     } catch (mysqli_sql_exception $ex) {
         $mensaje = "Error borrando " . $ex->getMessage();
+        $mensaje .= "<br />Sentencia -$sentencia-";
     }
 }
 
@@ -49,8 +52,7 @@ if (isset($_POST['submit'])) {
     <legend>Datos de usuario</legend>
     <h1><?= $mensaje ?? "" ?></h1>
     <form action="index.php" method="post">
-        ID del usuario a borrar <input type="text" name="id" id=""><br>
-
+        ID del usuario a borrar <input type="text" name="cod" id=""><br>
         <input type="submit" value="Borrar" name="submit">
     </form>
 </fieldset>

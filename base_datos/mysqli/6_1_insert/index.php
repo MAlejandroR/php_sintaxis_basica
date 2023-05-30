@@ -26,7 +26,7 @@ if (isset($_POST['submit'])){
             ('$nombre', '$password')";
     try {
         $conexion->query($sentencia);
-        $mensaje = "Se ha insertado correctaemnte $nombre";
+        $mensaje = "Se ha insertado correctamente usuario con id ".$conexion->insert_id;
     } catch (mysqli_sql_exception $ex) {
         $mensaje = "Error insertado " . $ex->getMessage();
     }

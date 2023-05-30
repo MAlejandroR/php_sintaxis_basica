@@ -24,16 +24,30 @@ class DataBase
 
     }
 
-    public function inserta(mixed $nombre, mixed $password)
+    public function insertar(mixed $nombre, mixed $password)
     {
         $sentencia = "insert into usuarios (nombre, password) 
                       values ('$nombre', '$password')";
         try {
             $this->conexion->query($sentencia);
-            return  "Se ha insertado correctaemnte $nombre";
-        } catch (mysqli_sql_exception $ex) {
+            return "Se ha insertado correctamente usuario con id ".$this->conexion->insert_id;        }
+        catch (mysqli_sql_exception $ex) {
             return  "Error insertado " . $ex->getMessage();
         }
     }
+    public function borrar(int $id)
+    {
+        $sentencia = "delete from  usuarios where cod=$id";
+        try {
+            $this->conexion->query($sentencia);
+            $registros= $this->conexion->affected_rows;
+            return "Se han borrado $registros usuario".(($registros>1 || $registros==0)?"s":"");
+
+        } catch (mysqli_sql_exception $ex) {
+            return "Error borrando " . $ex->getMessage();
+        }
+
+    }
+
 
 }

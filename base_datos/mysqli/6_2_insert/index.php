@@ -20,7 +20,7 @@ if (isset($_POST['submit'])){
    $bd = new DataBase();
    $nombre = $_POST['nombre'];
    $password = $_POST['password'];
-   $mensaje =$bd->inserta($nombre,$password);
+   $mensaje =$bd->insertar($nombre,$password);
 }
 
 ?>

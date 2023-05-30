@@ -18,9 +18,10 @@ $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 if (isset($_POST['submit'])){
    $bd = new DataBase();
+   $cod = $_POST['cod'];
    $nombre = $_POST['nombre'];
    $password = $_POST['password'];
-   $mensaje =$bd->inserta($nombre,$password);
+   $mensaje =$bd->actualiza($cod,$nombre,$password);
 }
 
 ?>
@@ -36,12 +37,15 @@ if (isset($_POST['submit'])){
 <body>
 <fieldset>
     <legend>Datos de usuario</legend>
-    <h1><?=$mensaje ??""?></h1>
-<form action="index.php" method="post">
-    Usuario <input type="text" name="nombre" id=""><br>
-    Password <input type="text" name="password" id=""><br>
-    <input type="submit" value="Insertar" name="submit">
-</form>
-    </fieldset>
+    <h1><?= $mensaje ?? "" ?></h1>
+    <form action="index.php" method="post">
+        cod del usuario a actualizar <input type="text" name="cod" id=""><br>
+        <h1>Nuevos datos de usuario </h1>
+        Usuario <input type="text" name="nombre" id=""><br>
+        Password <input type="text" name="password" id=""><br>
+
+        <input type="submit" value="Actualizar" name="submit">
+    </form>
+</fieldset>
 </body>
 </html>
