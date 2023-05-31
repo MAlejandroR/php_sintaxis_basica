@@ -39,6 +39,13 @@ No hemos visto pruebas unitarias, pero el objetivo será ir marcando pequeños r
 
 #### RF 3 Actualizar agenda
 1. leer los datos del formulario
-2. Creamos un **_contacto_** y una **_agenda_**
+2. Creamos un **_contacto_**
+3. Recuperamos la agenda. Si es la primera vez la creamos
+4. Realizamos la acción correspondiente (ya sabeos que no hay error)
+   1. Si hay contacto y teléfono:
+      2. Si el contacto existe, modificamos el contacto de  la agenda
+      3. Si no existe añadimos el contacto a la agenda
+   2. Si hay contacto y no hay teléfono, borramos el contacto de la agenda
+   3. 
 
 

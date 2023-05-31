@@ -3,7 +3,7 @@
 
 CREATE TABLE IF NOT EXISTS usuarios
 (
-    cod    INT          NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    codigo    INT          NOT NULL AUTO_INCREMENT PRIMARY KEY,
     nombre   VARCHAR(100) NOT NULL,
     password VARCHAR(200) NOT NULL
 ) ENGINE = INNODB;

@@ -1,6 +1,8 @@
 <?php
 //6_1_insert
 
+use Controller\DataBase;
+
 ini_set("display_errors", 1);
 error_reporting(E_ALL);
 
